@@ -10,7 +10,7 @@ No laboratório de introdução à computação em nuvem e ao Azure da DIO, apre
 
 ### Módulo 2
 No módulo 2, titulado "Benefícios da Nuvem: Escalabilidade e Elasticidade", aprendi sobre os seguintes assuntos:
-- Alta disponibilidade -> tempo que um serviço estará disponível para uso. Esse tempo é medido em porcentagem, como 99%, 99,99% ou 99,95%. Isso, e muito mais é definido no SLA do cloud provider.
+- Alta disponibilidade -> tempo que um serviço estará disponível para uso. Esse tempo é medido em porcentagem, como 99%, 99,99% ou 99,95%. Isso, e muito mais é definido no SLA (Service Level Agreement) do cloud provider.
 - Escalabilidade -> capacidade de ajustar recursos para atender à demanda. Quando a demanda abaixa, diminui recursos, quando aumenta, acrescenta recursos.
   - Vertical -> se um aplicativo precisa de mais processamento, é possível *escalar verticalmente* para adicionar mais CPUs ou RAM à máquina virtual.
 - Elasticidade -> se houvesse um salto repentino na demanda, os recursos poderiam ser expandidos (automaticamente ou manualmente).
@@ -36,9 +36,24 @@ Tabela de indisponibilidade em porcentagem SLA (Azure):
 |99,95%|5 minutos|21,6 minutos|4,38 horas|
 |99,99%|1,01 minuto|4,32 minutos|52,56 minutos|
 |99,999%|6 segundos|25,9 segundos|5,26 minutos|
+
 Caso o tempo de indisponibilidade no período seja maior do que o definido, é permitido pedir ressarcimento.
 
 <br>
+
+### Módulo 3
+Módulo sobre tipos de serviço de nuvem na Azure: IaaS, PaaS e SaaS.  
+- IaaS (Infraestrutura como Serviço) -> servidores e armazenamentos; firewalls/segurança de rede; planta física/edifício do datacenter. 
+  - O modelo mais personalizável, pois pode gerir quase tudo: SO da máquina virtual, configurações de rede, segurança etc, já que é apenas uma infraestrutura que vem do provedor.
+- PaaS (Plataforma como serviço)-> engloba o IaaS, sistemas operacionais e ferramentas para desenvolvedores, análise de negócios de gerenciamento de database. Não se envolve com a infraestrutura, apenas a aplicação disponibilizada.
+  - Como exemplo a configuração de um banco de dados: nome do servidor, localização, como vai ser autenticado.
+- SaaS (Software como Serviço) -> aplicativos e apps hospedados. Microsoft Teams. Esse é o nível mais "alto": quanto mais o nível sobe, menos os administradores precisam configurar coisas. Os usuários pagam pelo software que utilizam em um modelo de assinatura.
+- Modelo de responsabilidade compartilhada -> na Azure, existe esse modelo, que define como se divide a responsabilidade entre o cliente e a Microsoft.  
+
+Na tabela abaixo, o "No local" é um modelo on-premise, onde toda responsabilidade é do cliente. Conforme vai indo para a esquerda, a responsabilidade vai caindo mais para o provedor.  
+Há responsabilidades completamentes do cliente (as 3 de cima) e as apenas do provedor (as 3 de baixo, excluindo o on-premise).
+
+![Tabela de modelo de responsabilidade compartilhada](images/modelo-responsabilidade-compartilhada.png)
 
 ---
 
