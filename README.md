@@ -55,6 +55,38 @@ Há responsabilidades completamentes do cliente (as 3 de cima) e as apenas do pr
 
 ![Tabela de modelo de responsabilidade compartilhada](images/modelo-responsabilidade-compartilhada.png)
 
+### Módulo 4
+Módulo sobre Componentes de Arquitetura do Azure.
+- Existe um mapa de zonas de disponibilidade do Azure. Os pontos completos em azul são as zonas que já existem e podem ser utitlizadas, e os círculos com a linha fina sendo locais planejados.
+  - Quando se cria um recurso, é preciso escolher onde ele vai ficar de acordo com esse mapa. É bom escolher em um perto do local que tem a maior quantidade de usuários, pois se for longe demais pode ter mais delay de comunicação. O valor dos recursos irão variar de acordo com a região, e até possui alguns que não estarão disponíveis em algum lugar.
+  - As regiões são compostas de um ou mais datacenters próximos. Isso acontece para a replicação de dados, para permitir que os dados tenham alguma segurança, e mesmo que mais lento, o serviço possa permanecer disponível.
+    - O backbone da Microsoft permite a comunicação exclusiva entre seus datacenters, de baixa latência.
+    - As regiões fornecem flexibilidade e escala para reduzir a latência do cliente. Também preservam a residência dos dados com uma oferta abrangente de conformidade. Conformidade essa com a LGPD.
+  - As zonas de disponibilidade fornecem proteção contra tempo de inatividade devido a falha do datacenter, e definem que, quando um hack ou máquina para de funcionar, existe outro para fazer seu papel. Também separam fisicamente os datacenters dentro de uma mesma região.
+- Pares de regiões -> no mínimo 300 milhas de separação entre pares e regiões. "Duplinhas" (par) de regiões. Cada par tem replicação automática para alguns serviços.
+
+*Nota: É possível ver com mais detalhes os pares de regiões no site oficial da Azure ([link]( https://datacenters.microsoft.com/globe/explore/)). Onde sempre atualiza todas as regiões disponíveis e mostra os pares de regiões de cada datacenter.*
+
+![Pares de regiões](images/pares-de-regioes.png)
+
+- Regiões soberanas do Azure -> atende às necessidades de segurança e conformidade das agências federais, governos estaduais e locais dos EUA e seus provedores de soluções. Atendem agências militares, não aparecendo como uma região para clientes padrões.
+  - Também tem a Azure China -> a Microsoft é o primeiro provedor estrangeiro de serviços de nuvem pública da China, em conformidade com as regulamentações governamentais. Tem instância fisicamente separada dos serviços de nuvem do Azure, operados pela 21Vianet. Todos os dados permanecem dentro da China para garantir conformidade.
+- Os recursos do Azure -> componentes como armazenamento, máquinas virtuais e redes que estão disponíveis para criar soluções de nuvem.
+  - Grupo de recursos -> caixa de bugigangas, onde você vai juntando recursos (web, banco de dados, VMs, armazenamento) em um grupo. Ou criando os recursos e linkando eles.
+  - Os recursos podem existir em apenas um grupo de recursos. Podem existir em diferentes regiões. Eles podem ser movidos para diferentes grupos de recursos. Os apps podem utilizar vários grupos de recursos.
+- Assinaturas do Azure -> uma única conta do Azure pode criar assinaturas para cada área: assinatura de desenvolvimento, assinatura do teste, assinatura de produção.
+  - Uma conta pode ter várias assinaturas, mas uma assinatura pode pertencer à somente uma conta (1..n).
+  - Uma assinatura do Azure fornece acesso autenticado e autorizado às contas do Azure.
+  - Limite de cobrança -> gere relatórios de cobrança e faturas separados para cada assinatura.
+  - Limite do controle de acesso -> gerenciar e controlar o acesso aos recursos que os usuários podem provisionar com assinaturas específicas. Cada assinatura provisiona recursos diferentes.
+
+<img src="images/assinaturas-azure.png" alt="Assinaturas do Azure" width="660"/>
+
+
+- Grupos de gerenciamento -> Define regras padrões para assinaturas. Criado automaticamente para uma conta, mas é possível criar manualmente. Eles podem incluir várias assinaturas. As assinaturas herdam as condições aplicadas ao grupo de gerenciamento.
+
+![Grupos de gerenciamento](images/grupos-gerenciamento.png)
+
 ---
 
 <br>
