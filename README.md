@@ -1,5 +1,5 @@
 ## Resumo lab introdução ao Azure
-### Módulo 1
+### **Módulo 1**
 No laboratório de introdução à computação em nuvem e ao Azure da DIO, aprendi sobre os seguintes tópicos:
 - Todas as ferramentas que existem disponíveis no Azure (armazenamento, banco de dados, etc)
 - Modelos de nuvens: Nuvens privadas, públicas e híbridas
@@ -8,7 +8,7 @@ No laboratório de introdução à computação em nuvem e ao Azure da DIO, apre
   - O OpEx é o valor de operações, como uma mensalidade dos recursos da nuvem utilizados.
 <br>
 
-### Módulo 2
+### **Módulo 2**
 No módulo 2, titulado "Benefícios da Nuvem: Escalabilidade e Elasticidade", aprendi sobre os seguintes assuntos:
 - Alta disponibilidade -> tempo que um serviço estará disponível para uso. Esse tempo é medido em porcentagem, como 99%, 99,99% ou 99,95%. Isso, e muito mais é definido no SLA (Service Level Agreement) do cloud provider.
 - Escalabilidade -> capacidade de ajustar recursos para atender à demanda. Quando a demanda abaixa, diminui recursos, quando aumenta, acrescenta recursos.
@@ -41,7 +41,7 @@ Caso o tempo de indisponibilidade no período seja maior do que o definido, é p
 
 <br>
 
-### Módulo 3
+### **Módulo 3**
 Módulo sobre tipos de serviço de nuvem na Azure: IaaS, PaaS e SaaS.  
 - IaaS (Infraestrutura como Serviço) -> servidores e armazenamentos; firewalls/segurança de rede; planta física/edifício do datacenter. 
   - O modelo mais personalizável, pois pode gerir quase tudo: SO da máquina virtual, configurações de rede, segurança etc, já que é apenas uma infraestrutura que vem do provedor.
@@ -53,9 +53,9 @@ Módulo sobre tipos de serviço de nuvem na Azure: IaaS, PaaS e SaaS.
 Na tabela abaixo, o "No local" é um modelo on-premise, onde toda responsabilidade é do cliente. Conforme vai indo para a esquerda, a responsabilidade vai caindo mais para o provedor.  
 Há responsabilidades completamentes do cliente (as 3 de cima) e as apenas do provedor (as 3 de baixo, excluindo o on-premise).
 
-![Tabela de modelo de responsabilidade compartilhada](images/modelo-responsabilidade-compartilhada.png)
+<img src="images/modelo-responsabilidade-compartilhada.png" alt="Tabela de modelo de responsabilidade compartilhada" width="660"/>
 
-### Módulo 4
+### **Módulo 4**
 Módulo sobre Componentes de Arquitetura do Azure.
 - Existe um mapa de zonas de disponibilidade do Azure. Os pontos completos em azul são as zonas que já existem e podem ser utitlizadas, e os círculos com a linha fina sendo locais planejados.
   - Quando se cria um recurso, é preciso escolher onde ele vai ficar de acordo com esse mapa. É bom escolher em um perto do local que tem a maior quantidade de usuários, pois se for longe demais pode ter mais delay de comunicação. O valor dos recursos irão variar de acordo com a região, e até possui alguns que não estarão disponíveis em algum lugar.
@@ -87,8 +87,57 @@ Módulo sobre Componentes de Arquitetura do Azure.
 
 ![Grupos de gerenciamento](images/grupos-gerenciamento.png)
 
----
+### **Módulo 5**
+Este módulo é sobre Computação e Rede na Azure.
+- **Computação do Azure** -> serviço sob demanda que fornece recursos de computação, como discos, containers, AKS, processadores, memória, rede e SOs.
+- **VMs do Azure** -> são emulações de software de computadores físicos, que inclui processador virtual, memória, armazenamento e rede. IaaS que oferece personalização e controle total.
+- **Conjuntos de dimensionamentos de VMs** -> oferecem oportunidade de balanceamento de carga para dimensionar recursos automaticamente.
+- **Conjuntos de disponibilidade de VM** -> domínio de falha (cada hack), domínio de atualização (conjunto de pelo menos uma máquina de 3 domínios de falha). Os conjuntos são separados em domínios de falha para evitar problemas de disponibilidade (falta de energia, por exemplo).
+- **Área de trabalho virtual do Azure** -> cria um ambiente de virtualização do desktop. Reduz o risco que o recurso seja deixado para trás (gerenciamento melhor do desktop de cada funcionário). Possui implantações de várias sessões. Não permite que alguém transfira coisas de lá para fora. Foenece experiência de área de trabalho do Windows baseada em nuvem.
+  - Aplicativos dedicados para conexão e uso ou acessíveis de qualquer navegador moderno. 
+  - O logon de vários clientes permite que vários usuários façam logon no mesmo computador ao mesmo tempo.
+- **Contêineres do Azure** -> ambiente leve e virtualizado que não exige o gerenciamento do SO e pode responder a alterações sob demanda. Um serviço baseado nele é leve, pode ser alocado e destruído a qualquer momento, fazendo ele a opção ideal para a execução de microsserviços.
+  - Instâncias de container do Azure -> oferta de PaaS que executa um container ou pod de containers no Azure.
+  - Aplicativos de container do Azure -> oferta de PaaS, como instâncias de containers, que pode balancear a carga e escalar.
+- Serviço de Kubernetes do Azure (AKS) -> serviço de orquestração de containers com arquiteturas distribuídas e grandes volumes de containers.
+- **Azure Functions** -> oferta de PaaS que dá suporte à operações de computação sem servidor.
+  - É um código baseado em eventos, que é executado quando chamado, sem exigir uma infraestrutura de servidor durante períodos inativos.
+- **Máquinas virtuais** -> servidor baseado em nuvem que dá suporte a ambientes Windows ou Linux. Útil para migrações de lift-and-shift (carregar máquinas do modelo on-premise para a nuvem, quase literalmente) para a nuvem. Pacote do SO completo, incluindo SO do host.
+- **Serviços de Aplicativos do Azure** -> plataforma totalmente gerenciada para criar, implantar e dimensionar aplicativos web e APIs rapidamente.
+  - Trabalha com .NET, .NET Core, Node.js, Java, Python ou PHP.
+  - Também é uma ofeta de PaaS.
+- **Serviços de rede do Azure (Vnet)** -> permite que os recursos do Azure se comuniquem entre si, com a Internet e redes locais. Possui pontos de extremidades públicos (acessíveis de qualquer lugar da Internet) e privados (acesso somente dentro da rede).
+  - As sub-redes virtuais segmentam a rede para atender às necessidades. O emparelhamento de rede conecta suas redes privadas diretamente.
+- **Gateway de VPN** -> usado para enviar tráfego criptografado entre uma rede virtual do Azure e uma no local pela Internet pública.
+- **ExpressRoute** -> estende redes locais para o Azure por meio de uma conexão privada.
+- **DNS do Azure** -> confiabilidade e desempenho aproveitando uma rede global de servidores de nome DNS usando a rede Anycast. A segurança dele baseia-se no gerenciador de recursos do Azure.
+  - As redes virtuais personalizáveis permitem que use nomes de domínios privados em redes virtuais privadas.
 
-<br>
+### **Módulo 6**
+Módulo sobre Identidade, acesso e segurança.
+- **Microsoft Entra ID** -> serviço de gerenciamento de identidades e acesso baseado em nuvem do Microsoft Azure.
+  - ID do Microsoft Entra: Autenticação (funcionários entram para acessar recursos), Logon único (SSO - autentica uma vez, autentica automaticamente para as outras ferramentas), Gerenciamento de aplicativos, Negócios para Negócios (B2B - se é confiável para uma plataforma, é confiável para outra), Gerenciamento de dispositivos.
+- **Microsoft Entra Domain Services** -> gerenciamento de domínios e sincronização de usuários. Se o usuário é criado localmente, é replicado na nuvem, mas caso seja criado na nuvem, não vai para o local.
+- **Autenticação x autorização**
+  - **Autenticação** é identificar a pessoa ou serviço buscando acesso ao recurso. Solicita credenciais de acesso legítimo. É a base para criar princípios de identidade e controle de acesso seguros.
+  - **Autorização** determina o nível de acesso de uma pessoa ou serviço autenticado. Define quais dados eles podem acessar e o que podem fazer com eles.
+- **Autenticação multifator (MFA)** -> fornece segurança adicional para as identidades, exigindo dois ou mais elementos para autenticar completamente.
+  - Segue três estrátegias:
+    1. Algo que você sabe -> nome de usuário e senha.
+    2. Algo que voce possui -> alguma chave ou documento.
+    3. Algo que você é -> sua própria identidade.
+- **B2B do Microsoft Entra External ID** -> outros serviços fazer colaboração para autenticar o usuário, e também permite autenticação dentro do Microsoft Entra. Mas nesse caso, seria apenas um convidado, para não comprometer o serviço.
+- **B2C do Identidades Externas do Azure AD** -> fazer a inscrição no serviço do Azure AD B2C, trazendo a identidade externa, e não precisar refazer todos os passos de autenticação.
+- **Acesso Condicional** -> Com base em vários fatores: Associação de usuário ou grupo, Local do IP, dispositivo, aplicativo e detecção de risco, ele pode determinar se o usuário pode logar no serviço ou não.
+- **Controle de acesso baseado em função (RBAC)** -> Gerenciamento de acesso de granularidade fina (separa o acesso de cada recurso). Divide as tarefas dentro da equipe e conceda somente a quantidade de acesso que os usuários precisam para trabalhar. Habilita o acesso ao portal do Azure e o controle de acesso aos recursos.
+  - Existe o versionamento de acesso (como uma árvore, quanto mais alto, mais acesso), quanto mais específico, você tem acesso à apenas um recurso.
+- **Confiança Zero** -> diferente da abordagem clássica, que restringe tudo a uma rede "segura", ele protege os ativos em qualquer lugar com uma política central. Sempre aplicar o conceito de menor privilégio, e proteger o recurso ao máximo.
+- Proteção completa -> abordagem em camadas para proteger sistemas de computador, fornece vários níveis de proteção. Ataques contra uma camada são isolados das camadas subsequentes.
 
-*Nota: Estarei atualizando este repositório com o conhecimento adicional que eu adquirir ao longo do curso de Azure!*
+Camadas de defesa em profundidade:  
+<img src="images/camadas-defesa.png" alt="Assinaturas do Azure" width="460"/>
+
+- **Microsoft Defender para Nuvem** -> serviço de monitoramento que fornece proteção contra ameaças nos datacenter do Azure e locais. Tem conectividade com AWS e GCP.
+- **Recursos do Azure** -> fornece recomendações de segurança, detecta e bloqueia malware, analisa e identifica ataques potenciais, faz controle de acesso just-in-time para portas.
+
+Diferente do modelo on-premise, na nuvem, é possível separar o permissionamento para cada usuário, definindo o que cada um pode ou não pode acessar.  
